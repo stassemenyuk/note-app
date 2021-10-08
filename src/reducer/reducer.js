@@ -78,6 +78,12 @@ const reducer = (state = [], action) => {
         }
       });
       return temp;
+    case 'EDIT':
+      temp.notes[action.id].text = action.text;
+      let datePattern = /\d+\/\d+\/\d+/;
+      temp.notes[action.id].dates = datePattern.exec(action.text) || '-';
+      return temp;
+
     default:
       return state;
   }

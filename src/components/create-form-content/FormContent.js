@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem, countItems } from '../../actions/actions';
+import './FormContent.css';
 
 export default function FormContent() {
   const [text, setText] = useState('');
@@ -8,6 +9,7 @@ export default function FormContent() {
   const dispatch = useDispatch();
   return (
     <form
+      className="create-form"
       action=""
       onSubmit={(e) => {
         e.preventDefault();

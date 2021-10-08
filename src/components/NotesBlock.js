@@ -1,5 +1,5 @@
-import React from 'react';
-import { addItem, deleteItem, countItems } from '../actions/actions';
+import React, { useState } from 'react';
+import { addItem, deleteItem, countItems, editItem } from '../actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function NotesBlock(props) {
@@ -25,6 +25,13 @@ export default function NotesBlock(props) {
     tools = (
       <>
         <button
+          className="btn btn-outline-primary"
+          onClick={() => {
+            setDisabled(!disabled);
+          }}>
+          Change editability
+        </button>
+        <button
           className=" btn btn-secondary"
           onClick={() => {
             let elem = JSON.parse(JSON.stringify(notes[id]));
@@ -46,10 +53,19 @@ export default function NotesBlock(props) {
     );
   }
 
+  const [disabled, setDisabled] = useState(true);
+
   return (
     <tr>
       <td>{time}</td>
-      <td>{text}</td>
+      <td>
+        <input
+          type="text"
+          className="form-control"
+          value={text}
+          disabled={disabled}
+          onChange={(e) => dispatch(editItem(id, e.target.value))}></input>
+      </td>
       <td>{category}</td>
       <td>{dates}</td>
       <td>{tools}</td>
