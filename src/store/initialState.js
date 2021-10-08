@@ -1,21 +1,24 @@
 const initialState = {
   notes: [
     {
+      time: '11:32:14 AM',
       text: 'Hello',
       category: 'Task',
-      dates: '',
+      dates: '-',
       id: 0,
     },
     {
+      time: '11:32:14 AM',
       text: 'Hello',
       category: 'Task',
-      dates: '',
+      dates: '-',
       id: 1,
     },
     {
+      time: '11:32:14 AM',
       text: 'Hello',
       category: 'Task',
-      dates: '',
+      dates: '-',
       id: 2,
     },
   ],
