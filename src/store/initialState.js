@@ -25,6 +25,12 @@ const initialState = {
   archivedNotes: [],
   notesCounter: 3,
   archivedNotesCounter: 0,
+  actTasks: 2,
+  archTasks: 0,
+  actRnd: 1,
+  archRnd: 0,
+  actIdea: 0,
+  archIdea: 0,
 };
 
 export default initialState;

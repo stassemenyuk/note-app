@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../../actions/actions';
+import { addItem, countItems } from '../../actions/actions';
 
 export default function FormContent() {
   const [text, setText] = useState('');
@@ -19,6 +19,7 @@ export default function FormContent() {
         let datePattern = /\d+\/\d+\/\d+/;
         elem.dates = datePattern.exec(text) || '-';
         dispatch(addItem(elem, 'note'));
+        dispatch(countItems());
         setText('');
       }}>
       <h2>Create Note</h2>

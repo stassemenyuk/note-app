@@ -1,5 +1,12 @@
 const reducer = (state = [], action) => {
   let temp = JSON.parse(JSON.stringify(state));
+  temp.actTasks = 0;
+  temp.actRnd = 0;
+  temp.actIdea = 0;
+  temp.archTasks = 0;
+  temp.archRnd = 0;
+  temp.archIdea = 0;
+
   switch (action.type) {
     case 'ADD':
       if (action.arr === 'note') {
@@ -38,6 +45,38 @@ const reducer = (state = [], action) => {
         temp.notesCounter = temp.notes.length;
         temp.archivedNotesCounter = temp.archivedNotes.length;
       }
+      return temp;
+    case 'COUNT':
+      temp.notes.forEach((item) => {
+        switch (item.category) {
+          case 'Task':
+            temp.actTasks++;
+            break;
+          case 'Random thought':
+            temp.actRnd++;
+            break;
+          case 'Idea':
+            temp.actIdea++;
+            break;
+          default:
+            break;
+        }
+      });
+      temp.archivedNotes.forEach((item) => {
+        switch (item.category) {
+          case 'Task':
+            temp.archTasks++;
+            break;
+          case 'Random thought':
+            temp.archRnd++;
+            break;
+          case 'Idea':
+            temp.archIdea++;
+            break;
+          default:
+            break;
+        }
+      });
       return temp;
     default:
       return state;

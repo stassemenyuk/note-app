@@ -3,6 +3,7 @@ import Table from '../table/Table';
 import { useSelector } from 'react-redux';
 import NotesBlock from '../NotesBlock';
 import FormContent from '../create-form-content/FormContent';
+import CounterBlocks from '../CounterBlocks';
 
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
   const notesBlocks = getNoteOrArchiveBlocks(notes, false),
     archivedNotesBlocks = getNoteOrArchiveBlocks(archivedNotes, true);
   const notesHeaders = ['Time', 'Title', 'Category', 'Dates', 'Tools'];
+  const counterHeaders = ['Note category', 'Active', 'Archive'];
 
   const [formVisibility, setFormVisibility] = useState(false);
   const [archiveVisibility, setArchiveVisibility] = useState(false);
@@ -23,8 +25,8 @@ function App() {
   return (
     <div className="app">
       <div className="notes">
-        <h1>Your notes</h1>
-        <Table blocks={notesBlocks} headers={notesHeaders} />
+        <h2>Your notes</h2>
+        <Table name={'note-list'} blocks={notesBlocks} headers={notesHeaders} />
       </div>
       <button className="btn btn-success" onClick={() => setFormVisibility(!formVisibility)}>
         Create Note
@@ -35,11 +37,14 @@ function App() {
         Archived Notes
       </button>
       <div className={archivedNotesClassnames}>
-        <h1>Archived Notes</h1>
-        <Table blocks={archivedNotesBlocks} headers={notesHeaders} archive />
+        <h2>Archived Notes</h2>
+        <Table name={'note-list'} blocks={archivedNotesBlocks} headers={notesHeaders} archive />
       </div>
       <div className={createNoteClassnames}>
         <FormContent />
+      </div>
+      <div className="counter-table">
+        <Table name={'stats'} blocks={CounterBlocks()} headers={counterHeaders} />
       </div>
     </div>
   );

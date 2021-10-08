@@ -1,5 +1,5 @@
 import React from 'react';
-import { addItem, deleteItem } from '../actions/actions';
+import { addItem, deleteItem, countItems } from '../actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function NotesBlock(props) {
@@ -16,6 +16,7 @@ export default function NotesBlock(props) {
           let elem = JSON.parse(JSON.stringify(archivedNotes[id]));
           dispatch(addItem(elem, 'note'));
           dispatch(deleteItem(id, 'arch'));
+          dispatch(countItems());
         }}>
         Unarchive
       </button>
@@ -29,6 +30,7 @@ export default function NotesBlock(props) {
             let elem = JSON.parse(JSON.stringify(notes[id]));
             dispatch(addItem(elem, 'arch'));
             dispatch(deleteItem(id, 'note'));
+            dispatch(countItems());
           }}>
           Archive
         </button>
@@ -36,6 +38,7 @@ export default function NotesBlock(props) {
           className=" btn btn-danger"
           onClick={() => {
             dispatch(deleteItem(id, 'note'));
+            dispatch(countItems());
           }}>
           X
         </button>
