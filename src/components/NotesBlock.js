@@ -13,8 +13,6 @@ export default function NotesBlock(props) {
       <button
         className=" btn btn-secondary"
         onClick={() => {
-          console.log(id);
-          console.log(archivedNotes[id]);
           let elem = JSON.parse(JSON.stringify(archivedNotes[id]));
           dispatch(addItem(elem, 'note'));
           dispatch(deleteItem(id, 'arch'));
@@ -28,8 +26,6 @@ export default function NotesBlock(props) {
         <button
           className=" btn btn-secondary"
           onClick={() => {
-            console.log(id);
-            console.log(notes[id]);
             let elem = JSON.parse(JSON.stringify(notes[id]));
             dispatch(addItem(elem, 'arch'));
             dispatch(deleteItem(id, 'note'));
@@ -39,7 +35,6 @@ export default function NotesBlock(props) {
         <button
           className=" btn btn-danger"
           onClick={() => {
-            console.log(id);
             dispatch(deleteItem(id, 'note'));
           }}>
           X

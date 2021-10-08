@@ -38,10 +38,9 @@ function App() {
         <h1>Archived Notes</h1>
         <Table blocks={archivedNotesBlocks} headers={notesHeaders} archive />
       </div>
-      <form action="" className={createNoteClassnames}>
-        <h2>Create Note</h2>
+      <div className={createNoteClassnames}>
         <FormContent />
-      </form>
+      </div>
     </div>
   );
 }
